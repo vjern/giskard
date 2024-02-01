@@ -61,7 +61,7 @@ jobs:
         with:
           channel-id: ${{ vars.SLACK_CHANNEL_ID }}
           slack-message: |
-            <@channel> New release *v${{ inputs.version }}* triggered by ${{ github.actor }} :rocket:
+            <@channel> New release *v${{ inputs.version }}* triggered by <${{ github.server_url }}/${{ github.actor }}|${{ github.actor }}> :rocket:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 

@@ -120,10 +120,10 @@ jobs:
           ON_SUCCESS: |
             <@channel>
             Release **${{ env.VERSION_NAME }}** has been published ! :tada:
-            <https://pypi.org/project/giskard/${{ env.VERSION_NUMBER }}|Release notes](${{ steps.github-release.outputs.url }}) | [PyPI>
+            <${{ steps.github-release.outputs.url }}|Release notes> | <https://pypi.org/project/giskard/${{ env.VERSION_NUMBER }}|PyPI>
           ON_FAILURE: |
             "<@channel> Release ${{ env.VERSION_NAME }} failed on post-release :cross:
-            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|Logs>
+            <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|logs>
         with:
           channel-id: ${{ vars.SLACK_CHANNEL_ID }}
           slack-message: ${{ env.JOB_SUCCESS == 'true' && env.ON_SUCCESS || env.ON_FAILURE }}
