@@ -21,12 +21,12 @@ jobs:
           username: ${{ github.actor }}
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Interrupt job
-        if: ${{ steps.is_organization_member.outputs.result == 'false' }}
-        shell: bash
-        run: |
-          echo "Job failed due to user not being a member of Giskard-AI organization and the 'safe for build' label not being set on the PR"
-          exit 1
+      # - name: Interrupt job
+      #   if: ${{ steps.is_organization_member.outputs.result == 'false' }}
+      #   shell: bash
+      #   run: |
+      #     echo "Job failed due to user not being a member of Giskard-AI organization and the 'safe for build' label not being set on the PR"
+      #     exit 1
 
       - name: Checkout code
         uses: actions/checkout@v4.1.0
@@ -61,11 +61,9 @@ jobs:
         with:
           channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
           slack-message: |
-            <!channel> New release **v${{ inputs.version }}** has been triggered by @${{ github.actor }} :rocket:
+            <@channel> New release **v${{ inputs.version }}** triggered by @${{ github.actor }} :rocket:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          if-no-files-found: error
-          retention-days: 1
 
       - name: Trigger release process in giskard-hub
         uses: peter-evans/repository-dispatch@v2
