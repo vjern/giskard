@@ -130,6 +130,6 @@ jobs:
           # reploy_broadcast == also send to channel
           payload: |
             {
-              "thread_ts": "${{ inputs.slack_thread_id }}",
+              "thread_ts": "${{ github.event.client_payload.slack_thread_id }}",
               "reply_broadcast": true
             }
