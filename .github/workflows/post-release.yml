@@ -109,6 +109,7 @@ jobs:
 
       - name: Set job success env var
         run: |
+          test -z "a"
           echo "JOB_SUCCESS=true" >> $GITHUB_ENV
 
       - name: "@slack Share release process completion"
@@ -121,7 +122,7 @@ jobs:
             *${{ env.VERSION_NAME }}* has been published to PyPI ! :python: :tada:
             <${{ steps.github-release.outputs.url }}|Release notes> | <https://pypi.org/project/giskard/${{ env.VERSION_NUMBER }}|PyPI> <@channel>
           ON_FAILURE: |-
-            Release ${{ env.VERSION_NAME }} failed on post-release :cross:
+            Could not publish ${{ env.VERSION_NAME }} to PyPI :cross:
             <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|logs> <@channel>
         with:
           channel-id: ${{ vars.SLACK_CHANNEL_ID }}
