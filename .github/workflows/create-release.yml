@@ -60,8 +60,9 @@ jobs:
         uses: slackapi/slack-github-action@v1.24.0
         with:
           channel-id: ${{ vars.SLACK_CHANNEL_ID }}
-          slack-message: |
-            <@channel> New release *v${{ inputs.version }}* triggered by <${{ github.server_url }}/${{ github.actor }}|${{ github.actor }}> :rocket:
+          slack-message: |-
+            <@channel>
+            Release *v${{ inputs.version }}* is on the way :rocket: <${{ github.server_url }}/${{ github.actor }}|@${{ github.actor }}> | <${{ github.ref }}|commit>)
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
