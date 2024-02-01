@@ -59,9 +59,9 @@ jobs:
         id: slack
         uses: slackapi/slack-github-action@v1.24.0
         with:
-          channel-id: ${{ secrets.SLACK_CHANNEL_ID }}
+          channel-id: ${{ vars.SLACK_CHANNEL_ID }}
           slack-message: |
-            <@channel> New release **v${{ inputs.version }}** triggered by @${{ github.actor }} :rocket:
+            <@channel> New release *v${{ inputs.version }}* triggered by ${{ github.actor }} :rocket:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
