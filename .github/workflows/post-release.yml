@@ -109,7 +109,6 @@ jobs:
 
       - name: Set job success env var
         run: |
-          test -z "a"
           echo "JOB_SUCCESS=true" >> $GITHUB_ENV
 
       - name: "@slack Share release process completion"
