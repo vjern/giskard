@@ -117,11 +117,10 @@ jobs:
         uses: slackapi/slack-github-action@v1.24.0
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
-          ON_SUCCESS: |
-            <@channel>
-            Release **${{ env.VERSION_NAME }}** has been published ! :tada:
+          ON_SUCCESS: |-
+            <@channel> *${{ env.VERSION_NAME }}* has been published to PyPI :python: :tada:
             <${{ steps.github-release.outputs.url }}|Release notes> | <https://pypi.org/project/giskard/${{ env.VERSION_NUMBER }}|PyPI>
-          ON_FAILURE: |
+          ON_FAILURE: |-
             "<@channel> Release ${{ env.VERSION_NAME }} failed on post-release :cross:
             <${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}|logs>
         with:
