@@ -118,11 +118,11 @@ jobs:
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
           ON_SUCCESS: |
-            <!channel>
+            <@channel>
             Release **${{ env.VERSION_NAME }}** has been published ! :tada:
             [Release notes](${{ steps.github-release.outputs.url }}) | [PyPI](https://pypi.org/project/giskard/${{ env.VERSION_NUMBER }})
           ON_FAILURE: |
-            "<!channel> Release ${{ env.VERSION_NAME }} failed on post-release :cross:
+            "<@channel> Release ${{ env.VERSION_NAME }} failed on post-release :cross:
             [Logs](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})
         with:
           channel-id: ${{ vars.SLACK_CHANNEL_ID }}
