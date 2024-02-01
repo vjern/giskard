@@ -61,8 +61,8 @@ jobs:
         with:
           channel-id: ${{ vars.SLACK_CHANNEL_ID }}
           slack-message: |-
-            <@channel>
-            Release *v${{ inputs.version }}* is on the way :rocket: <${{ github.server_url }}/${{ github.actor }}|@${{ github.actor }}> | <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|commit>)
+            Release *v${{ inputs.version }}* is on the way :rocket:
+            <${{ github.server_url }}/${{ github.actor }}|@${{ github.actor }}> | <${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}|commit> <@channel>
         env:
           SLACK_BOT_TOKEN: ${{ secrets.SLACK_BOT_TOKEN }}
 
